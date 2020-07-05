@@ -1,0 +1,23 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BleDemo", "BleDemo\BleDemo.csproj", "{A99BBA17-B599-4EBD-806A-195872DBB879}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|iPhoneSimulator = Debug|iPhoneSimulator
+		Release|iPhoneSimulator = Release|iPhoneSimulator
+		Debug|iPhone = Debug|iPhone
+		Release|iPhone = Release|iPhone
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A99BBA17-B599-4EBD-806A-195872DBB879}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{A99BBA17-B599-4EBD-806A-195872DBB879}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{A99BBA17-B599-4EBD-806A-195872DBB879}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{A99BBA17-B599-4EBD-806A-195872DBB879}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{A99BBA17-B599-4EBD-806A-195872DBB879}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{A99BBA17-B599-4EBD-806A-195872DBB879}.Debug|iPhone.Build.0 = Debug|iPhone
+		{A99BBA17-B599-4EBD-806A-195872DBB879}.Release|iPhone.ActiveCfg = Release|iPhone
+		{A99BBA17-B599-4EBD-806A-195872DBB879}.Release|iPhone.Build.0 = Release|iPhone
+	EndGlobalSection
+EndGlobal
