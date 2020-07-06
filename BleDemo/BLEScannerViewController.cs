@@ -4,6 +4,7 @@ using Plugin.BLE.Abstractions.EventArgs;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 using UIKit;
 
@@ -15,7 +16,7 @@ namespace BleDemo
         private IBluetoothLE bluetoothLE;
         private IList<IDevice> deviceList = new List<IDevice>();
 
-        public BLEScannerViewController (IntPtr handle) : base (handle)
+        public BLEScannerViewController(IntPtr handle) : base(handle)
         {
         }
 
@@ -30,14 +31,16 @@ namespace BleDemo
             var state = bluetoothLE.State;
 
             uitableView.Source = new BleTableViewSource(deviceList, adapter);
-            bluetoothLE.StateChanged += OnStateChanged;
-            adapter.DeviceDiscovered += OnDeviceDiscovered;
         }
 
         public override void ViewDidAppear(bool animated)
         {
             base.ViewDidAppear(animated);
+            bluetoothLE.StateChanged += OnStateChanged;
+            adapter.DeviceDiscovered += OnDeviceDiscovered;
+            adapter.DeviceConnected += OnDeviceConnected;
             StartScanningBle();
+
         }
 
         public override void ViewDidDisappear(bool animated)
@@ -45,6 +48,7 @@ namespace BleDemo
             base.ViewDidDisappear(animated);
             bluetoothLE.StateChanged -= OnStateChanged;
             adapter.DeviceDiscovered -= OnDeviceDiscovered;
+            adapter.DeviceConnected -= OnDeviceConnected;
         }
 
         private void StartScanningBle()
@@ -56,6 +60,22 @@ namespace BleDemo
         {
             deviceList.Add(eventArgs.Device);
             uitableView.ReloadData();
+        }
+
+        private async void OnDeviceConnected(object sender, DeviceEventArgs eventArgs)
+        {
+            var connectedDevice = eventArgs.Device;
+            var services = await connectedDevice.GetServicesAsync();
+            var service = services.FirstOrDefault();
+            var characteristics = await service.GetCharacteristicsAsync();
+            var characterstic = characteristics.FirstOrDefault();
+            var bytes = await characterstic.ReadAsync();
+            Debug.WriteLine("hello i am there" + byte.MaxValue);
+            Debug.WriteLine("hello i am there" + characterstic.CanRead);
+
+            // read char
+            // read/write device
+
         }
 
         private void OnStateChanged(object sender, BluetoothStateChangedArgs stateChangedArgs)
