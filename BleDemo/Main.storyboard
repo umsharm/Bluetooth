@@ -18,9 +18,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="204" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
-                                <rect key="frame" x="7" y="353" width="398" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="204" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="20" y="606" width="374" height="30"/>
                                 <color key="backgroundColor" systemColor="linkColor" colorSpace="calibratedRGB" red="0" green="0.47843137254902" blue="1" alpha="1"/>
                                 <size key="titleShadowOffset" width="10" height="10"/>
                                 <state key="normal" title="Start ble scanning">
@@ -31,6 +30,11 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <constraints>
+                            <constraint id="4117" firstItem="204" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin"/>
+                            <constraint id="4118" firstAttribute="trailingMargin" secondItem="204" secondAttribute="trailing"/>
+                            <constraint id="4554" firstItem="wfy-db-euE" firstAttribute="top" secondItem="204" secondAttribute="bottom" constant="100"/>
+                        </constraints>
                     </view>
                     <connections/>
                 </viewController>

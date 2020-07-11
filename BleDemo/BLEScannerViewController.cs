@@ -39,6 +39,8 @@ namespace BleDemo
             bluetoothLE.StateChanged += OnStateChanged;
             adapter.DeviceDiscovered += OnDeviceDiscovered;
             adapter.DeviceConnected += OnDeviceConnected;
+            adapter.DeviceDisconnected += OnDeviceDisConnected;
+
             StartScanningBle();
 
         }
@@ -49,6 +51,8 @@ namespace BleDemo
             bluetoothLE.StateChanged -= OnStateChanged;
             adapter.DeviceDiscovered -= OnDeviceDiscovered;
             adapter.DeviceConnected -= OnDeviceConnected;
+            adapter.DeviceDisconnected -= OnDeviceDisConnected;
+
         }
 
         private void StartScanningBle()
@@ -70,11 +74,21 @@ namespace BleDemo
             var characteristics = await service.GetCharacteristicsAsync();
             var characterstic = characteristics.FirstOrDefault();
             var bytes = await characterstic.ReadAsync();
+            uitableView.ReloadData();
             Debug.WriteLine("hello i am there" + byte.MaxValue);
             Debug.WriteLine("hello i am there" + characterstic.CanRead);
 
+           // uitableView.ReloadData();
+
+
             // read char
             // read/write device
+
+        }
+
+        private  void OnDeviceDisConnected(object sender, DeviceEventArgs eventArgs)
+        {
+            uitableView.ReloadData();
 
         }
 

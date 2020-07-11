@@ -28,12 +28,23 @@ namespace BleDemo
             {
                 cell = new UITableViewCell(UITableViewCellStyle.Subtitle, "cell");
             }
+            if (deviceList[indexPath.Row].State == Plugin.BLE.Abstractions.DeviceState.Connected )
+            {
+                cell.TextLabel.Text = string.Format("{0}", deviceList[indexPath.Row].Name);
+                cell.DetailTextLabel.Text = "Connected";
+                cell.DetailTextLabel.TextColor = UIColor.Green;
+            }
+            else
+            {
+                cell.TextLabel.Text = string.Format("{0}", deviceList[indexPath.Row].Name);
+                cell.DetailTextLabel.Text = string.Format("{0}", deviceList[indexPath.Row].Id);
+                cell.DetailTextLabel.TextColor = UIColor.Black;
 
+
+            }
             //cell.TextLabel.Text = string.Format("{0}", devices[indexPath.Row].Name);
             //cell.DetailTextLabel.Text = string.Format("{0}", devices[indexPath.Row].Id);
 
-            cell.TextLabel.Text = string.Format("{0}", deviceList[indexPath.Row].Name);
-            cell.DetailTextLabel.Text = string.Format("{0}", deviceList[indexPath.Row].Id);
 
             return cell;
         }
@@ -52,7 +63,16 @@ namespace BleDemo
 
             try
             {
-                await adapter.ConnectToDeviceAsync(deviceList[indexPath.Row]);
+                if (deviceList[indexPath.Row].State == Plugin.BLE.Abstractions.DeviceState.Connected)
+                {
+                    await adapter.DisconnectDeviceAsync(deviceList[indexPath.Row]);
+
+                } else
+                {
+                    await adapter.ConnectToDeviceAsync(deviceList[indexPath.Row]);
+
+                }
+
             }
             catch(DeviceConnectionException e)
             {
