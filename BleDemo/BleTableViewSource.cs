@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using BleDemo.Nordic;
 using Foundation;
 using Plugin.BLE.Abstractions.Contracts;
 using Plugin.BLE.Abstractions.Exceptions;
 using UIKit;
+
 
 namespace BleDemo
 {
@@ -42,6 +44,10 @@ namespace BleDemo
 
 
             }
+
+            var device = deviceList[indexPath.Row].NativeDevice
+            as CoreBluetooth.CBPeripheral;
+
             //cell.TextLabel.Text = string.Format("{0}", devices[indexPath.Row].Name);
             //cell.DetailTextLabel.Text = string.Format("{0}", devices[indexPath.Row].Id);
 

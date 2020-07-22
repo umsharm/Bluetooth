@@ -72,6 +72,9 @@
       <PackageReference Include="Plugin.BLE">
         <Version>2.1.1</Version>
       </PackageReference>
+      <PackageReference Include="Xamarin.Nordic.DFU.iOS">
+        <Version>4.7.1.50</Version>
+      </PackageReference>
     </ItemGroup>
     <ItemGroup>
         <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -119,6 +122,7 @@
     </ItemGroup>
     <ItemGroup>
         <Folder Include="Resources\" />
+        <Folder Include="Nordic\" />
     </ItemGroup>
     <ItemGroup>
         <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -127,6 +131,7 @@
     <ItemGroup>
         <None Include="Info.plist" />
         <None Include="Entitlements.plist" />
+        <None Include="Info %28copy%29.plist" />
     </ItemGroup>
     <ItemGroup>
         <Compile Include="Main.cs" />
@@ -141,6 +146,7 @@
           <DependentUpon>BLEScannerViewController.cs</DependentUpon>
         </Compile>
         <Compile Include="BleTableViewSource.cs" />
+        <Compile Include="Nordic\FirmwareUpdater.cs" />
     </ItemGroup>
     <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

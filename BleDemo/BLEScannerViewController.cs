@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using UIKit;
+using Xamarin.Nordic.DFU.iOS;
 
 namespace BleDemo
 {
@@ -15,6 +16,8 @@ namespace BleDemo
         private IAdapter adapter;
         private IBluetoothLE bluetoothLE;
         private IList<IDevice> deviceList = new List<IDevice>();
+
+
 
         public BLEScannerViewController(IntPtr handle) : base(handle)
         {
