@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using BleDemo.Nordic;
 using Foundation;
 using Plugin.BLE.Abstractions.Contracts;
 using Plugin.BLE.Abstractions.Exceptions;

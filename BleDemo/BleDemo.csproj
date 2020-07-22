@@ -131,7 +131,6 @@
     <ItemGroup>
         <None Include="Info.plist" />
         <None Include="Entitlements.plist" />
-        <None Include="Info %28copy%29.plist" />
     </ItemGroup>
     <ItemGroup>
         <Compile Include="Main.cs" />
@@ -147,6 +146,8 @@
         </Compile>
         <Compile Include="BleTableViewSource.cs" />
         <Compile Include="Nordic\FirmwareUpdater.cs" />
+        <Compile Include="Nordic\DfuServiceDelegateImplementation.cs" />
+        <Compile Include="Nordic\DfuLogger.cs" />
     </ItemGroup>
     <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
