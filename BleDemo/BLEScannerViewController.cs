@@ -7,7 +7,6 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using UIKit;
-using Xamarin.Nordic.DFU.iOS;
 
 namespace BleDemo
 {
@@ -16,8 +15,6 @@ namespace BleDemo
         private IAdapter adapter;
         private IBluetoothLE bluetoothLE;
         private IList<IDevice> deviceList = new List<IDevice>();
-
-
 
         public BLEScannerViewController(IntPtr handle) : base(handle)
         {
@@ -29,9 +26,11 @@ namespace BleDemo
 
             bluetoothLE = CrossBluetoothLE.Current;
             adapter = CrossBluetoothLE.Current.Adapter;
+            // todo need to figure out time 
             adapter.ScanTimeout = 50000;
             adapter.ScanMode = ScanMode.Balanced;
             var state = bluetoothLE.State;
+            Debug.WriteLine($"Current device state :: {state}");
 
             uitableView.Source = new BleTableViewSource(deviceList, adapter);
         }
@@ -45,7 +44,6 @@ namespace BleDemo
             adapter.DeviceDisconnected += OnDeviceDisConnected;
 
             StartScanningBle();
-
         }
 
         public override void ViewDidDisappear(bool animated)
@@ -78,15 +76,6 @@ namespace BleDemo
             var characterstic = characteristics.FirstOrDefault();
             var bytes = await characterstic.ReadAsync();
             uitableView.ReloadData();
-            Debug.WriteLine("hello i am there" + byte.MaxValue);
-            Debug.WriteLine("hello i am there" + characterstic.CanRead);
-
-           // uitableView.ReloadData();
-
-
-            // read char
-            // read/write device
-
         }
 
         private  void OnDeviceDisConnected(object sender, DeviceEventArgs eventArgs)
