@@ -17,14 +17,16 @@ namespace BleDemo.Nordic
             var cbManager = new CBCentralManager();
             dfuLogger = new DfuLogger();
 
-            // what data need to send
-            var path = NSBundle.MainBundle.PathForResource("softdevice_s140", ".zip");
+            /**
+            Creates the DFU Firmware object from a Distribution packet (ZIP).
+            returns: The DFU firmware object or `nil` in case of an error.
+            */
+            var path = NSBundle.MainBundle.PathForResource("softdevice_s140", "zip");
             var urlPath = new NSUrl(path);
-            dfuFirmware = new DFUFirmware(urlPath);
+            dfuFirmware = new DFUFirmware(urlPath, DFUFirmwareType.Softdevice);
 
             dfuServiceInitiator = new DFUServiceInitiator(cbManager, peripheral);
-            //_dfuServiceInitiator.SetPacketsReceiptNotificationsEnabled(true);
-            //_dfuServiceInitiator.SetDisableNotification(true);
+            dfuServiceInitiator.PacketReceiptNotificationParameter = 12;
 
             dfuServiceInitiator.EnableUnsafeExperimentalButtonlessServiceInSecureDfu = true;
             dfuServiceInitiator.ProgressDelegate = new DfuServiceDelegateImplementation(dfuLogger);
