@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using BleDemo.Nordic;
+using CoreBluetooth;
 using Foundation;
 using Plugin.BLE.Abstractions.Contracts;
 using Plugin.BLE.Abstractions.Exceptions;
@@ -70,12 +72,13 @@ namespace BleDemo
             {
                 if (deviceList[indexPath.Row].State == Plugin.BLE.Abstractions.DeviceState.Connected)
                 {
-                    await adapter.DisconnectDeviceAsync(deviceList[indexPath.Row]);
-
-                } else
+                    var device = deviceList[indexPath.Row];
+                    FirmwareUpdater firmwareUpdater = new FirmwareUpdater(device.NativeDevice as CBPeripheral);
+                    //await adapter.DisconnectDeviceAsync(device);
+                }
+                else
                 {
                     await adapter.ConnectToDeviceAsync(deviceList[indexPath.Row]);
-
                 }
 
             }

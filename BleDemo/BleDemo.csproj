@@ -153,5 +153,14 @@
         <Compile Include="Nordic\DfuServiceDelegateImplementation.cs" />
         <Compile Include="Nordic\DfuLogger.cs" />
     </ItemGroup>
+    <ItemGroup>
+      <BundleResource Include="Resources\softdevice_s140.hex" />
+      <BundleResource Include="Resources\softdevice_s140.zip" />
+      <BundleResource Include="Resources\blinky.hex" />
+      <BundleResource Include="Resources\blinky.zip" />
+      <BundleResource Include="Resources\hrs_application_s140.zip" />
+      <BundleResource Include="Resources\samplefile.hex" />
+      <BundleResource Include="Resources\samplefile.zip" />
+    </ItemGroup>
     <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

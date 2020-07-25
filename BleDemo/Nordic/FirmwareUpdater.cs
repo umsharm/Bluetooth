@@ -18,7 +18,7 @@ namespace BleDemo.Nordic
             dfuLogger = new DfuLogger();
 
             // what data need to send
-            var path = NSBundle.MainBundle.PathForResource("ic_launcher", ".png");
+            var path = NSBundle.MainBundle.PathForResource("softdevice_s140", ".zip");
             var urlPath = new NSUrl(path);
             dfuFirmware = new DFUFirmware(urlPath);
 
