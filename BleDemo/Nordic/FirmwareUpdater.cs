@@ -7,57 +7,54 @@ namespace BleDemo.Nordic
 {
     public class FirmwareUpdater : IDisposable
     {
-        private readonly DFUServiceInitiator _dfuServiceInitiator;
-        private DFUServiceController _controller;
-        private DFUFirmware _firmware;
+        private readonly DFUServiceInitiator dfuServiceInitiator;
+        private DFUServiceController dfuController;
+        private DFUFirmware dfuFirmware;
         private DfuLogger dfuLogger;
-
 
         public FirmwareUpdater(CBPeripheral peripheral)
         {
             var cbManager = new CBCentralManager();
             dfuLogger = new DfuLogger();
 
-            _dfuServiceInitiator = new DFUServiceInitiator(cbManager, peripheral);
+            // what data need to send
+            var path = NSBundle.MainBundle.PathForResource("ic_launcher", ".png");
+            var urlPath = new NSUrl(path);
+            dfuFirmware = new DFUFirmware(urlPath);
+
+            dfuServiceInitiator = new DFUServiceInitiator(cbManager, peripheral);
             //_dfuServiceInitiator.SetPacketsReceiptNotificationsEnabled(true);
             //_dfuServiceInitiator.SetDisableNotification(true);
-            // You need to tweak these parameters to match your device(SDK version and implementation details)
-            //_dfuServiceInitiator.SetUnsafeExperimentalButtonlessServiceInSecureDfuEnabled(true);
-            _dfuServiceInitiator.EnableUnsafeExperimentalButtonlessServiceInSecureDfu = true;
-            _dfuServiceInitiator.ProgressDelegate = new DfuServiceDelegateImplementation(dfuLogger);
+
+            dfuServiceInitiator.EnableUnsafeExperimentalButtonlessServiceInSecureDfu = true;
+            dfuServiceInitiator.ProgressDelegate = new DfuServiceDelegateImplementation(dfuLogger);
+            dfuServiceInitiator.Logger = dfuLogger;
 
             //_dfuServiceInitiator.SetZip(firmwareZipFile);
-            var path = NSBundle.MainBundle.PathForResource("", ".png");
-            var url = new NSUrl(path);
-            //_firmware.FileUrl
-            _dfuServiceInitiator.WithFirmware(_firmware);
+            dfuServiceInitiator.WithFirmware(dfuFirmware);
 
             //_dfuServiceInitiator.SetBinOrHex(DfuService.TypeApplication, firmwareZipFile);
-
-
-
 
         }
 
         public void Start()
         {
-            _controller = _dfuServiceInitiator.Start();
-
+            dfuController = dfuServiceInitiator.Start();
         }
 
         public void Abort()
         {
-            _controller.Abort();
+            dfuController.Abort();
         }
 
         public void Pause()
         {
-            _controller.Pause();
+            dfuController.Pause();
         }
 
         public void Resume()
         {
-            _controller.Resume();
+            dfuController.Resume();
         }
 
         public void Dispose()

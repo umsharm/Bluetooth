@@ -119,6 +119,10 @@
         <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon60.png">
             <Visible>false</Visible>
         </ImageAsset>
+        <ImageAsset Include="Assets.xcassets\Image.imageset\Contents.json" />
+        <ImageAsset Include="Assets.xcassets\Image.imageset\ic_launcher.png" />
+        <ImageAsset Include="Assets.xcassets\Image.imageset\ic_launcher-1.png" />
+        <ImageAsset Include="Assets.xcassets\Image.imageset\ic_launcher-2.png" />
     </ItemGroup>
     <ItemGroup>
         <Folder Include="Resources\" />
