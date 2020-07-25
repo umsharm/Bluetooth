@@ -152,6 +152,7 @@
         <Compile Include="Nordic\FirmwareUpdater.cs" />
         <Compile Include="Nordic\DfuServiceDelegateImplementation.cs" />
         <Compile Include="Nordic\DfuLogger.cs" />
+        <Compile Include="Nordic\FirmwareUpdaterDelegate.cs" />
     </ItemGroup>
     <ItemGroup>
       <BundleResource Include="Resources\softdevice_s140.hex" />

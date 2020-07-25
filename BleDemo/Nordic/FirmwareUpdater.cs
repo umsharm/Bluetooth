@@ -5,38 +5,34 @@ using Foundation;
 
 namespace BleDemo.Nordic
 {
-    public class FirmwareUpdater : IDisposable
+    public class FirmwareUpdater : FirmwareUpdaterDelegate, IDisposable
     {
-        private readonly DFUServiceInitiator dfuServiceInitiator;
+        private DFUServiceInitiator dfuServiceInitiator;
         private DFUServiceController dfuController;
         private DFUFirmware dfuFirmware;
         private DfuLogger dfuLogger;
+        private CBCentralManager cbCentralManager;
 
         public FirmwareUpdater(CBPeripheral peripheral)
         {
-            var cbManager = new CBCentralManager();
-            dfuLogger = new DfuLogger();
+            cbCentralManager = new CBCentralManager();
 
             /**
-            Creates the DFU Firmware object from a Distribution packet (ZIP).
-            returns: The DFU firmware object or `nil` in case of an error.
+             * Creates the DFU Firmware object from a Distribution packet (ZIP).
+             * returns: The DFU firmware object or `nil` in case of an error.
             */
             var path = NSBundle.MainBundle.PathForResource("softdevice_s140", "zip");
             var urlPath = new NSUrl(path);
             dfuFirmware = new DFUFirmware(urlPath, DFUFirmwareType.Softdevice);
 
-            dfuServiceInitiator = new DFUServiceInitiator(cbManager, peripheral);
+            dfuServiceInitiator = new DFUServiceInitiator(cbCentralManager, peripheral);
             dfuServiceInitiator.PacketReceiptNotificationParameter = 12;
 
             dfuServiceInitiator.EnableUnsafeExperimentalButtonlessServiceInSecureDfu = true;
             dfuServiceInitiator.ProgressDelegate = new DfuServiceDelegateImplementation(dfuLogger);
-            dfuServiceInitiator.Logger = dfuLogger;
+            dfuServiceInitiator.Logger = new DfuLogger();
 
-            //_dfuServiceInitiator.SetZip(firmwareZipFile);
             dfuServiceInitiator.WithFirmware(dfuFirmware);
-
-            //_dfuServiceInitiator.SetBinOrHex(DfuService.TypeApplication, firmwareZipFile);
-
         }
 
         public void Start()
@@ -61,6 +57,29 @@ namespace BleDemo.Nordic
 
         public void Dispose()
         {
+            if (dfuController != null)
+            {
+                dfuController.Dispose();
+                dfuController = null;
+            }
+
+            if (dfuServiceInitiator != null)
+            {
+                dfuServiceInitiator.Dispose();
+                dfuServiceInitiator = null;
+            }
+
+            if (dfuFirmware != null)
+            {
+                dfuFirmware.Dispose();
+                dfuFirmware = null;
+            }
+
+            if (cbCentralManager != null)
+            {
+                cbCentralManager.Dispose();
+                cbCentralManager = null;
+            }
         }
     }
 }

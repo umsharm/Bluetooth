@@ -46,9 +46,6 @@ namespace BleDemo
 
             }
 
-            var device = deviceList[indexPath.Row].NativeDevice
-            as CoreBluetooth.CBPeripheral;
-
             //cell.TextLabel.Text = string.Format("{0}", devices[indexPath.Row].Name);
             //cell.DetailTextLabel.Text = string.Format("{0}", devices[indexPath.Row].Id);
 
@@ -73,7 +70,8 @@ namespace BleDemo
                 if (deviceList[indexPath.Row].State == Plugin.BLE.Abstractions.DeviceState.Connected)
                 {
                     var device = deviceList[indexPath.Row];
-                    FirmwareUpdater firmwareUpdater = new FirmwareUpdater(device.NativeDevice as CBPeripheral);
+                    FirmwareUpdaterDelegate firmwareUpdater = new FirmwareUpdater(device.NativeDevice as CBPeripheral);
+                    firmwareUpdater.Start();
                     //await adapter.DisconnectDeviceAsync(device);
                 }
                 else
@@ -84,7 +82,7 @@ namespace BleDemo
             }
             catch(DeviceConnectionException e)
             {
-
+                System.Diagnostics.Debug.WriteLine(e.Message);
             }
         }
     }
