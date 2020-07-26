@@ -74,5 +74,9 @@
 	<string>Description of the Bluetooth request message (required on iOS 10, deprecated)</string>
 	<key>NSBluetoothAlwaysUsageDescription</key>
 	<string>Description of the Bluetooth request message (required on iOS 13)</string>
+	<key>Application supports iTunes file sharing</key>
+	<true/>
+	<key>LSSupportsOpeningDocumentsInPlace</key>
+	<true/>
 </dict>
 </plist>
