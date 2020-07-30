@@ -8,6 +8,7 @@ using Plugin.BLE.Abstractions.Exceptions;
 using UIKit;
 
 
+
 namespace BleDemo
 {
     public class BleTableViewSource : UITableViewSource
@@ -15,11 +16,14 @@ namespace BleDemo
         IList<IDevice> deviceList;
         IList<Device> devices = new List<Device>();
         IAdapter adapter;
+        INavigation navigation;
 
-        public BleTableViewSource(IList<IDevice> deviceList, IAdapter adapter)
+        public BleTableViewSource(IList<IDevice> deviceList, IAdapter adapter, INavigation navigation)
         {
             this.adapter = adapter;
             this.deviceList = deviceList;
+            this.navigation = navigation;
+
             //devices.Add(new Device());
             //devices.Add(new Device());
         }
@@ -70,8 +74,8 @@ namespace BleDemo
                 if (deviceList[indexPath.Row].State == Plugin.BLE.Abstractions.DeviceState.Connected)
                 {
                     var device = deviceList[indexPath.Row];
-                    FirmwareUpdaterDelegate firmwareUpdater = new FirmwareUpdater(device.NativeDevice as CBPeripheral);
-                    firmwareUpdater.Start();
+                    navigation.launchViewController(device);
+
                     //await adapter.DisconnectDeviceAsync(device);
                 }
                 else

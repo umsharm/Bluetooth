@@ -131,6 +131,7 @@
     <ItemGroup>
         <InterfaceDefinition Include="LaunchScreen.storyboard" />
         <InterfaceDefinition Include="Main.storyboard" />
+        <InterfaceDefinition Include="BLEDetailViewViewController.xib" />
     </ItemGroup>
     <ItemGroup>
         <None Include="Info.plist" />
@@ -153,6 +154,11 @@
         <Compile Include="Nordic\DfuServiceDelegateImplementation.cs" />
         <Compile Include="Nordic\DfuLogger.cs" />
         <Compile Include="Nordic\FirmwareUpdaterDelegate.cs" />
+        <Compile Include="BLEDetailViewViewController.cs" />
+        <Compile Include="BLEDetailViewViewController.designer.cs">
+          <DependentUpon>BLEDetailViewViewController.cs</DependentUpon>
+        </Compile>
+        <Compile Include="INavigation.cs" />
     </ItemGroup>
     <ItemGroup>
       <BundleResource Include="Resources\softdevice_s140.hex" />
