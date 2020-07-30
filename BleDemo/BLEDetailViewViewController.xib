@@ -22,7 +22,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="154">
-                    <rect key="frame" x="16" y="32" width="343" height="200"/>
+                    <rect key="frame" x="16" y="64" width="343" height="200"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Device name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="151">
                             <rect key="frame" x="0.0" y="0.0" width="343" height="66.666666666666671"/>
@@ -45,19 +45,19 @@
                         <constraint firstAttribute="height" constant="200" id="J76-LQ-Aob"/>
                     </constraints>
                 </stackView>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="Mvi-jb-HhR">
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="Mvi-jb-HhR">
                     <rect key="frame" x="15" y="680" width="345" height="100"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1844">
-                            <rect key="frame" x="0.0" y="0.0" width="345" height="61"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1844">
+                            <rect key="frame" x="0.0" y="0.0" width="345" height="46.666666666666664"/>
                             <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" name="Helvetica-BoldOblique" family="Helvetica" pointSize="17"/>
                             <state key="normal" title="Upload file">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="334">
-                            <rect key="frame" x="0.0" y="68" width="345" height="32"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="334">
+                            <rect key="frame" x="0.0" y="53.666666666666629" width="345" height="46.333333333333343"/>
                             <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" name="Helvetica-BoldOblique" family="Helvetica" pointSize="17"/>
                             <state key="normal" title="Update firmaware">
@@ -73,7 +73,7 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Mvi-jb-HhR" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="15" id="0OC-iv-3Rc"/>
-                <constraint firstItem="154" firstAttribute="top" secondItem="2" secondAttribute="top" constant="32" id="QVA-C8-nvk"/>
+                <constraint firstItem="154" firstAttribute="top" secondItem="2" secondAttribute="top" constant="64" id="QVA-C8-nvk"/>
                 <constraint firstItem="154" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="16" id="ROE-zp-Ved"/>
                 <constraint firstAttribute="bottom" secondItem="Mvi-jb-HhR" secondAttribute="bottom" constant="32" id="UE3-WK-p6k"/>
                 <constraint firstAttribute="trailing" secondItem="Mvi-jb-HhR" secondAttribute="trailing" constant="15" id="duR-O9-Va0"/>

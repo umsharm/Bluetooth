@@ -34,6 +34,7 @@ namespace BleDemo
             // Perform any additional setup after loading the view, typically from a nib.
             status.Text = device.State.ToString();
             deviceName.Text = device.Name;
+            deviceId.Text = device.Id.ToString();
         var picker = new UIDocumentPickerViewController(allowedUTIs, UIDocumentPickerMode.Open);
             picker.WasCancelled += Picker_WasCancelled;
 
